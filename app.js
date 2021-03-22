@@ -19,10 +19,37 @@ async function main() {
 
     // the following code examples can be pasted here...
 
-    return 'done.';
+    // return 'done.';
+
+
+    //inserts 3 documents to documents collection
+    const insertResult = await collection.insertMany([
+        {
+            name: "Pratik",
+            score: 9
+        },
+        {
+            name: "Shahi",
+            score: 10
+        },
+        {
+            name: "messi",
+            score: 8
+        },
+    ]);
+    console.log('Inserted documents =>', insertResult);
+
+    //query that returns all the documents.
+    const findResult = await collection.find({}).toArray()
+    console.log('Found documents =>', findResult)
 }
+
 
 main()
     .then(console.log)
     .catch(console.error)
     .finally(() => client.close());
+
+
+
+
